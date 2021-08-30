@@ -4,7 +4,7 @@
 Basic CLI Template
 
 Example usage:
-    python-template-cli version
+    poetry run template-cli version
 
 """
 import click
