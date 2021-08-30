@@ -23,6 +23,7 @@ sudo apt-get -y install --no-install-recommends \
     libxmlsec1-dev \
     llvm \
     make \
+    shellcheck \
     tk-dev \
     wget \
     xz-utils \
