@@ -24,7 +24,7 @@ pytest-runner = "5.3.1"
 pytest-cov = "3.0.0"
 pytest-mock = "3.6.1"
 pytest-xdist = {extras = ["psutil"], version = "2.4.0"}
-pytest-randomly = "3.10.1"
+pytest-randomly = "3.10.2"
 
 [tool.poetry.scripts]
 template-cli = "template_cli.cli:cli"
