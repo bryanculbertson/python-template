@@ -20,6 +20,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libxmlsec1-dev \
         llvm \
         make \
+        shellcheck \
         tk-dev \
         wget \
         xz-utils \
