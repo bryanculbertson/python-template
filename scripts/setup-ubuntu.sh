@@ -52,6 +52,7 @@ curl -sSL https://install.python-poetry.org | "$PYENV_ROOT"/shims/python -
 export PATH="/home/vscode/.local/bin:$PATH"
 
 echo "Installing all of our python dependencies using Poetry."
+"$HOME"/.local/bin/poetry env use "$(cat .python-version)"
 "$HOME"/.local/bin/poetry install
 
 echo "Enabling pre-commit hooks"

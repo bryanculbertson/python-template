@@ -45,7 +45,7 @@ jobs:
 
       - name: setup poetry
         run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+          curl -sSL https://install.python-poetry.org | python -
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
 
       - name: load poetry install from cache
@@ -55,7 +55,9 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      - run: poetry install
+      - run: |
+          poetry env use "$(cat .python-version)"
+          poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
       - name: load .tox from cache

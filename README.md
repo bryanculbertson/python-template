@@ -64,6 +64,7 @@
 1. Install app dependancies:
 
     ```sh
+    poetry env use "$(cat .python-version)"
     poetry install
     ```
 
