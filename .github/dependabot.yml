@@ -25,3 +25,4 @@ updates:
       - dependency-name: "isort"
       - dependency-name: "mypy"
       - dependency-name: "types-*"
+      - dependency-name: "pre-commit"
