@@ -52,4 +52,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-
 echo "Installing all of our python dependencies using Poetry."
 "$HOME"/.local/bin/poetry install
 
+echo "Enabling pre-commit hooks"
+"$HOME"/.local/bin/poetry run tox -e install-hooks
+
 echo "Install done."
