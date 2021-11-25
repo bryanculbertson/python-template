@@ -7,7 +7,7 @@ set -u
 # don't hide exit codes when pipeline output to another command
 set -o pipefail
 
-echo "Installing python dependencies"
+echo "Installing system dependencies"
 sudo apt-get update
 sudo apt-get -y install --no-install-recommends \
     build-essential \
@@ -29,6 +29,7 @@ sudo apt-get -y install --no-install-recommends \
     xz-utils \
     zlib1g-dev
 
+echo "Installing pyenv"
 curl https://pyenv.run | bash
 
 # shellcheck disable=SC2016
@@ -45,13 +46,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+echo "Installing project python version."
 "$PYENV_ROOT"/bin/pyenv install
 
-curl -sSL https://install.python-poetry.org | "$PYENV_ROOT"/shims/python -
+echo "Installing poetry using system python"
+curl -sSL https://install.python-poetry.org | python3 -
 
 export PATH="$HOME/.local/bin:$PATH"
 
-echo "Installing all of our python dependencies using Poetry."
+echo "Installing python dependencies using Poetry using project python."
 "$HOME"/.local/bin/poetry env use "$(cat .python-version)"
 "$HOME"/.local/bin/poetry install
 

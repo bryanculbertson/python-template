@@ -1,8 +1,8 @@
 # python-template
 
-## Setup Environment Once
+## Setup Environment for Ubuntu/Debian
 
-1. Install system deps (Debian):
+1. Install system deps:
 
     ```sh
     sudo apt-get -y install --no-install-recommends \
@@ -32,18 +32,21 @@
     curl https://pyenv.run | bash
     ```
 
-1. Add to `.bashrc`:
+1. Add `pyenv` paths for `bash`:
 
     ```sh
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    {
+        echo ''
+        echo 'export PYENV_ROOT="$HOME/.pyenv"'
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
+        echo 'eval "$(pyenv init --path)"'
+        echo 'eval "$(pyenv init -)"'
+        echo 'eval "$(pyenv virtualenv-init -)"'
+    } >> ~/.bashrc
 
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
     ```
 
-1. Install project python version as specified in `.python-version`:
+1. Install `python`:
 
     ```sh
     pyenv install
@@ -52,16 +55,64 @@
 1. Install `poetry`:
 
     ```sh
-    curl -sSL https://install.python-poetry.org | python -
+    curl -sSL https://install.python-poetry.org | python3 -
     ```
 
-1. Add to `.bashrc`:
+1. Add `poetry` paths for `bash`:
 
     ```sh
-    export PATH="$HOME/.poetry/bin:$PATH"
+    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.bashrc
     ```
 
-1. Install app dependancies:
+## Setup Environment for Mac
+
+1. Install `brew`:
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+1. Install `pyenv`:
+
+    ```sh
+    brew update
+    brew install pyenv
+    ```
+
+1. Add `pyenv` path for `zsh`:
+
+    ```sh
+    echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    ```
+
+1. Install `python`:
+
+    ```sh
+    pyenv install
+    ```
+
+1. Install `poetry`:
+
+    ```sh
+    curl -sSL https://install.python-poetry.org | python3 -
+    ```
+
+1. Add `poetry` path for `zsh`
+
+    ```sh
+    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
+    ```
+
+## Setup Project Environment
+
+1. Install project python version specified in `.python-version`:
+
+    ```sh
+    pyenv install
+    ```
+
+1. Install project dependancies into project virtualenv:
 
     ```sh
     poetry env use "$(cat .python-version)"
