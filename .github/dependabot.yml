@@ -19,9 +19,9 @@ updates:
       prefix-development: "[reqs-dev]"
     # Ignore libraries are updated in .poetry.lock and .pre-commit-config.yaml
     ignore:
-      - dependency-name: "types-*"
+      - dependency-name: "black"
       - dependency-name: "boto3-stubs"
       - dependency-name: "flake8"
-      - dependency-name: "black"
-      - dependency-name: "mypy"
       - dependency-name: "isort"
+      - dependency-name: "mypy"
+      - dependency-name: "types-*"
