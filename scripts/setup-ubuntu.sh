@@ -23,8 +23,6 @@ sudo apt-get -y install --no-install-recommends \
     libxmlsec1-dev \
     llvm \
     make \
-    python-is-python3 \
-    python3 \
     shellcheck \
     tk-dev \
     wget \
@@ -48,13 +46,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+echo "Installing project python version."
+"$PYENV_ROOT"/bin/pyenv install
+
 echo "Installing poetry using system python"
 curl -sSL https://install.python-poetry.org | python3 -
 
 export PATH="$HOME/.local/bin:$PATH"
-
-echo "Installing project python version."
-"$PYENV_ROOT"/bin/pyenv install
 
 echo "Installing python dependencies using Poetry using project python."
 "$HOME"/.local/bin/poetry env use "$(cat .python-version)"

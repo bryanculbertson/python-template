@@ -19,8 +19,6 @@
         libxmlsec1-dev \
         llvm \
         make \
-        python-is-python3 \
-        python3 \
         shellcheck \
         tk-dev \
         wget \
@@ -46,6 +44,12 @@
         echo 'eval "$(pyenv virtualenv-init -)"'
     } >> ~/.bashrc
 
+    ```
+
+1. Install `python`:
+
+    ```sh
+    pyenv install
     ```
 
 1. Install `poetry`:
@@ -82,7 +86,13 @@
     echo 'eval "$(pyenv init -)"' >> ~/.zshrc
     ```
 
-1. Install `poetry` into system python:
+1. Install `python`:
+
+    ```sh
+    pyenv install
+    ```
+
+1. Install `poetry`:
 
     ```sh
     curl -sSL https://install.python-poetry.org | python3 -
