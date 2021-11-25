@@ -47,7 +47,9 @@ eval "$(pyenv init --path)"
 
 "$PYENV_ROOT"/bin/pyenv install
 
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | "$PYENV_ROOT"/shims/python -
+curl -sSL https://install.python-poetry.org | "$PYENV_ROOT"/shims/python -
+
+export PATH="/home/vscode/.local/bin:$PATH"
 
 echo "Installing all of our python dependencies using Poetry."
 "$HOME"/.local/bin/poetry install
