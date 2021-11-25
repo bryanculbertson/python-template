@@ -3,7 +3,7 @@
 default_language_version:
   python: "python3.9"
 default_stages: ["commit", "push"]
-minimum_pre_commit_version: "2.14.0"
+minimum_pre_commit_version: "2.15.0"
 
 # Intentionally running 'forbid-crlf' before 'trailing-whitespace'
 repos:
