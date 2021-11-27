@@ -1,6 +1,15 @@
 # python-template
 
-## Setup Environment for Ubuntu/Debian
+## Setup
+
+### Setup Environment for VSCode Devcontainer/Github Codespace
+
+1. Create a Codespace or open in VS Code locally
+
+    Follow Github instructions to [Create a Codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace) for this project, or VS Code instructions to [open repo in container](https://code.visualstudio.com/docs/remote/containers-tutorial)
+
+
+### Setup Environment for Ubuntu/Debian
 
 1. Install system deps:
 
@@ -26,13 +35,13 @@
         zlib1g-dev
     ```
 
-1. Install `pyenv`:
+1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
 
     ```sh
     curl https://pyenv.run | bash
     ```
 
-1. Add `pyenv` paths for `bash`:
+    Add `pyenv` paths for `bash`:
 
     ```sh
     {
@@ -43,68 +52,21 @@
         echo 'eval "$(pyenv init -)"'
         echo 'eval "$(pyenv virtualenv-init -)"'
     } >> ~/.bashrc
-
     ```
 
-1. Install `python`:
+    Refresh current shell with updated paths:
 
     ```sh
-    pyenv install
+    source ~/.bashrc
     ```
 
-1. Install `poetry`:
+    Check `pyenv` was installed correctly by verifying `python` points to `~/.pyenv/shims/python`:
 
     ```sh
-    curl -sSL https://install.python-poetry.org | python3 -
+    which python
     ```
 
-1. Add `poetry` paths for `bash`:
-
-    ```sh
-    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.bashrc
-    ```
-
-## Setup Environment for Mac
-
-1. Install `brew`:
-
-    ```sh
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-
-1. Install `pyenv`:
-
-    ```sh
-    brew update
-    brew install pyenv
-    ```
-
-1. Add `pyenv` path for `zsh`:
-
-    ```sh
-    echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-    ```
-
-1. Install `python`:
-
-    ```sh
-    pyenv install
-    ```
-
-1. Install `poetry`:
-
-    ```sh
-    curl -sSL https://install.python-poetry.org | python3 -
-    ```
-
-1. Add `poetry` path for `zsh`
-
-    ```sh
-    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
-    ```
-
-## Setup Project Environment
+    If you have an issue, see pyenv's [instructions](https://github.com/pyenv/pyenv#basic-github-checkout).
 
 1. Install project python version specified in `.python-version`:
 
@@ -112,12 +74,141 @@
     pyenv install
     ```
 
-1. Install project dependancies into project virtualenv:
+    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+
+    ```sh
+    python --version
+    cat .python-version
+    ```
+
+1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
+
+    ```sh
+    curl -sSL https://install.python-poetry.org | python3 -
+    ```
+
+    Add `poetry` paths for `bash`:
+
+    ```sh
+    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.bashrc
+    ```
+
+    Refresh current shell with updated paths:
+
+    ```sh
+    source ~/.bashrc
+    ```
+
+### Setup Environment for Mac
+
+1. Install homebrew (if you don't already have it):
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+1. Install system deps:
+
+    ```sh
+    brew update
+    brew install openssl readline xz zlib
+    ```
+
+1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
+
+    ```sh
+    brew update
+    brew install pyenv
+    ```
+
+    Add `pyenv` path for `zsh` (or `~/.bashrc` if using `bash`):
+
+    ```sh
+    echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    ```
+
+    Refresh current shell with updated paths:
+
+    ```sh
+    source ~/.zprofile
+    source ~/.zshrc
+    ```
+
+    Check `pyenv` was installed correctly by verifying `python` points to `~/.pyenv/shims/python`:
+
+    ```sh
+    which python
+    ```
+
+    If you have an issue, see pyenv's [instructions](https://github.com/pyenv/pyenv#basic-github-checkout).
+
+1. Install project python version specified in `.python-version`:
+
+    ```sh
+    pyenv install
+    ```
+
+    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+
+    ```sh
+    python --version
+    cat .python-version
+    ```
+
+1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
+
+    ```sh
+    curl -sSL https://install.python-poetry.org | python3 -
+    ```
+
+    Add `poetry` path for `zsh` (or `~/.bashrc` if using `bash`):
+
+    ```sh
+    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
+    ```
+
+    Refresh current shell with updated paths:
+
+    ```sh
+    source ~/.zshrc
+    ```
+
+### Setup Project Environment
+
+1. Install project python version specified in `.python-version`:
+
+    ```sh
+    pyenv install
+    ```
+
+    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+
+    ```sh
+    python --version
+    cat .python-version
+    ```
+
+1. Install project and dependancies into local poetry managed `.venv`:
 
     ```sh
     poetry env use "$(cat .python-version)"
     poetry install
     ```
+
+1. Test your installation!
+
+    ```sh
+    poetry run template-cli --help
+    ```
+
+    *or*
+
+    ```sh
+    poetry shell
+    template-cli --help
+    ```
+
 
 1. (optional) Enable pre-commit hooks:
 
@@ -125,17 +216,19 @@
     poetry run tox -e install-hooks
     ```
 
-## Run Commands
+# Usage
 
-1. Output code version
+## Commands
+
+1. Output project version
 
     ```python
     poetry run template-cli version
     ```
 
-## Development Commands
+## Development
 
-1. Run test and linting
+1. Run tests and linting
 
     ```python
     poetry run tox
@@ -144,11 +237,11 @@
 1. Run tests
 
     ```python
-    poetry run tox -e test
+    poetry run tox -qe test
     ```
 
 1. Run linting
 
     ```python
-    poetry run tox -e lint
+    poetry run tox -qe lint
     ```
