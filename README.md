@@ -2,6 +2,8 @@
 
 ## Setup
 
+This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://github.com/python-poetry/poetry) to manage python virtual environment and dependencies. If you have a working `python` system with those tools installed then you can skip environment setup and go straight to `Install Project`. If you know what you are doing, then you can skip using `pyenv` as long as you have the version of python installed that is specified in `.python-version`.
+
 ### Setup Environment for VSCode Devcontainer/Github Codespace
 
 1. Create a Codespace or open in VS Code locally
@@ -174,7 +176,7 @@
     source ~/.zshrc
     ```
 
-### Setup Project Environment
+### Install Project
 
 1. Install project python version specified in `.python-version`:
 
