@@ -14,12 +14,19 @@ Before using the project, either install it by following instructions in [Instal
 
 ## Installation
 
-If not developing, then no need to clone this repo. You can use [pipx](https://github.com/pypa/pipx) to install the project. If you don't have `pipx` then [install it](https://pypa.github.io/pipx/installation/).
+If not developing, then no need to clone this repo. You can use [pipx](https://github.com/pypa/pipx) to install the project directly. If you don't have `pipx` then first [install it](https://pypa.github.io/pipx/installation/).
 
-After installing `pipx` then install the project:
-```sh
-pipx install git+https://github.com/bryanculbertson/python-template
-```
+1. Install the project:
+
+    ```sh
+    pipx install git+https://github.com/bryanculbertson/python-template
+    ```
+
+1. Test your installation!
+
+    ```sh
+    template-cli --help
+    ```
 
 ## Development
 
