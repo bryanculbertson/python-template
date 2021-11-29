@@ -23,11 +23,15 @@ sudo apt-get -y install --no-install-recommends \
     libxmlsec1-dev \
     llvm \
     make \
-    shellcheck \
     tk-dev \
     wget \
     xz-utils \
     zlib1g-dev
+
+echo "Installing project dependencies"
+sudo apt-get update
+sudo apt-get -y install --no-install-recommends \
+    shellcheck
 
 echo "Installing pyenv"
 curl https://pyenv.run | bash
@@ -46,15 +50,20 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-echo "Installing project python version."
+echo "Installing project python version"
 "$PYENV_ROOT"/bin/pyenv install
+"$PYENV_ROOT"/bin/pyenv global "$(cat .python-version)"
 
-echo "Installing poetry using system python"
+echo "Installing pipx"
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+echo "Installing poetry"
 curl -sSL https://install.python-poetry.org | python3 -
 
 export PATH="$HOME/.local/bin:$PATH"
 
-echo "Installing python dependencies using Poetry using project python."
+echo "Installing python dependencies using Poetry into local venv"
 "$HOME"/.local/bin/poetry env use "$(cat .python-version)"
 "$HOME"/.local/bin/poetry install
 
