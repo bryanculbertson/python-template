@@ -2,9 +2,11 @@
 
 ## Usage
 
-Before using the project, either install it using `pipx` by following instructions in [Installation](#installation) section, or configure a development environment by following instructions in [Development](#development) section.
+Before using the project, either install it by following instructions in [Installation](#installation) section, or configure a development environment by following instructions in [Development](#development) section.
 
-1. Output project version
+### Commands
+
+- Output project version
 
     ```python
     template-cli version
@@ -12,21 +14,16 @@ Before using the project, either install it using `pipx` by following instructio
 
 ## Installation
 
-If not developing then use [pipx](https://github.com/pypa/pipx) to install project. If you don't have `pipx` then install it by following their [instructions](https://pypa.github.io/pipx/installation/).
+If not developing, then no need to clone this repo. You can use [pipx](https://github.com/pypa/pipx) to install the project. If you don't have `pipx` then [install it](https://pypa.github.io/pipx/installation/).
 
-- Either, install project:
-
-    ```sh
-    pipx install git+https://github.com/bryanculbertson/python-template
-    ```
-
-- Or prefix each command with `pipx run`:
-
-    ```sh
-    pipx run --spec git+https://github.com/bryanculbertson/python-template
-    ```
+After installing `pipx` then install the project:
+```sh
+pipx install git+https://github.com/bryanculbertson/python-template
+```
 
 ## Development
+
+If developing, then clone this repo, setup a development environment, and run the project from there.
 
 ### Setup System Environment
 
@@ -142,7 +139,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 
 #### Mac
 
-1. Install homebrew (if you don't already have it):
+1. Install homebrew (if you haven't already):
 
     ```sh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
