@@ -1,21 +1,53 @@
 # python-template
 
-## Setup
+## Usage
 
-This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://github.com/python-poetry/poetry) to manage python virtual environment and dependencies. If you have a working `python` system with those tools installed then you can skip environment setup and go straight to `Install Project`. If you know what you are doing, then you can skip using `pyenv` as long as you have the version of python installed that is specified in `.python-version`.
+Before using the project, either install it using `pipx` by following instructions in [Installation](#installation) section, or configure a development environment by following instructions in [Development](#development) section.
 
-### Setup Environment for VSCode Devcontainer/Github Codespace
+1. Output project version
+
+    ```python
+    template-cli version
+    ```
+
+## Installation
+
+If not developing then use [pipx](https://github.com/pypa/pipx) to install project. If you don't have `pipx` then install it by following their [instructions](https://pypa.github.io/pipx/installation/).
+
+- Either, install project:
+
+    ```sh
+    pipx install git+https://github.com/bryanculbertson/python-template
+    ```
+
+- Or prefix each command with `pipx run`:
+
+    ```sh
+    pipx run --spec git+https://github.com/bryanculbertson/python-template
+    ```
+
+## Development
+
+### Setup System Environment
+
+This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://github.com/python-poetry/poetry) to manage python virtual environment and dependencies. If you have a working `python` system with those tools installed then you can skip system environment setup and go straight to [Setup Project Environment](#setup-project-environment).
+
+If you know what you are doing, then you can skip using `pyenv` as long as you have the version of python installed that is specified in `.python-version`.
+
+#### VSCode Devcontainer/Github Codespace
 
 1. Create a Codespace or open in VS Code locally
 
     Follow Github instructions to [Create a Codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace) for this project, or VS Code instructions to [open repo in container](https://code.visualstudio.com/docs/remote/containers-tutorial)
 
+1. Choose the local `.venv` python if given a choice.
 
-### Setup Environment for Ubuntu/Debian
+#### Ubuntu/Debian
 
-1. Install system deps:
+1. Install python build dependencies:
 
     ```sh
+    sudo apt-get update
     sudo apt-get -y install --no-install-recommends \
         build-essential \
         curl \
@@ -30,11 +62,18 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
         libxmlsec1-dev \
         llvm \
         make \
-        shellcheck \
         tk-dev \
         wget \
         xz-utils \
         zlib1g-dev
+    ```
+
+1. Install project dependencies:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get -y install --no-install-recommends \
+        shellcheck
     ```
 
 1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
@@ -101,7 +140,7 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     source ~/.bashrc
     ```
 
-### Setup Environment for Mac
+#### Mac
 
 1. Install homebrew (if you don't already have it):
 
@@ -109,17 +148,21 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-1. Install system deps:
+1. Install python build dependencies:
 
     ```sh
-    brew update
-    brew install openssl readline xz zlib
+    brew install openssl readline sqlite3 xz zlib
+    ```
+
+1. Install project dependencies:
+
+    ```sh
+    brew install shellcheck
     ```
 
 1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
 
     ```sh
-    brew update
     brew install pyenv
     ```
 
@@ -176,7 +219,9 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     source ~/.zshrc
     ```
 
-### Install Project
+### Setup Project Environment
+
+After setting up system environment with `pyenv` and `poetry`, then you can install the project and its depedancies.
 
 1. Install project python version specified in `.python-version`:
 
@@ -211,24 +256,11 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     template-cli --help
     ```
 
+### Testing
 
-1. (optional) Enable pre-commit hooks:
+After setting up system and project environments you can run tests, formatting, linting, etc. with [tox](https://github.com/tox-dev/tox).
 
-    ```sh
-    poetry run tox -e install-hooks
-    ```
-
-# Usage
-
-## Commands
-
-1. Output project version
-
-    ```python
-    poetry run template-cli version
-    ```
-
-## Development
+`tox` is installed and managed within the local venv so either activate the `venv` with `poetry shell`, or prefix each command with `poetry run`.
 
 1. Run tests and linting
 
@@ -246,4 +278,10 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
 
     ```python
     poetry run tox -qe lint
+    ```
+
+1. Enable pre-commit hooks:
+
+    ```sh
+    poetry run tox -e install-hooks
     ```
