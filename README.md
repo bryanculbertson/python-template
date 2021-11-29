@@ -76,7 +76,7 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     pyenv install
     ```
 
-    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+    Check correct `python`  version was installed by verifying it matches `.python-version`:
 
     ```sh
     python --version
@@ -151,7 +151,7 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     pyenv install
     ```
 
-    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+    Check correct `python`  version was installed by verifying it matches `.python-version`:
 
     ```sh
     python --version
@@ -184,7 +184,7 @@ This project uses [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://g
     pyenv install
     ```
 
-    Check correct `python`  version was installed by verifying it matchings `.python-version`:
+    Check correct `python`  version was installed by verifying it matches `.python-version`:
 
     ```sh
     python --version
