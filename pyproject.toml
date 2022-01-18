@@ -18,7 +18,7 @@ mypy = "0.910"
 pre-commit = "2.15.0"
 
 # Test
-tox = "3.24.4"
+tox = "3.24.5"
 pytest = "6.2.5"
 pytest-runner = "5.3.1"
 pytest-cov = "3.0.0"
