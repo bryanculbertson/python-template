@@ -7,7 +7,7 @@ authors = ["Bryan Culbertson <bryan@urbanfootprint.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 click = "8.0.3"
-python-dotenv = "0.19.2"
+python-dotenv = "0.21.1"
 
 [tool.poetry.dev-dependencies]
 # Lint (versions duplicated in .pre-commit-config.yaml)
