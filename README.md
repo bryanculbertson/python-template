@@ -53,22 +53,37 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
     ```sh
     sudo apt-get update
     sudo apt-get -y install --no-install-recommends \
+        bash \
         build-essential \
         curl \
+        expat \
+        fontconfig \
+        gcc \
+        git \
         libbz2-dev \
         libffi-dev \
         liblzma-dev \
-        libncursesw5-dev \
+        libmpfr-dev \
+        libncurses-dev \
+        libpq-dev \
         libreadline-dev \
         libsqlite3-dev \
         libssl-dev \
         libxml2-dev \
         libxmlsec1-dev \
         llvm \
+        locales \
         make \
+        openssl \
+        sudo \
         tk-dev \
+        unzip \
+        vim \
+        wget \
         wget \
         xz-utils \
+        zip \
+        zlib1g \
         zlib1g-dev
     ```
 
