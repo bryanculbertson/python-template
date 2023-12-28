@@ -1,7 +1,7 @@
 # Docs @ http://pre-commit.com/
 
 default_language_version:
-  python: "python3.10"
+  python: "python3.12"
 default_stages: ["commit", "push"]
 minimum_pre_commit_version: "2.15.0"
 
@@ -52,7 +52,7 @@ repos:
       - id: "mixed-line-ending"
       - id: "trailing-whitespace"
 
-  - repo: https://gitlab.com/pycqa/flake8
+  - repo: https://github.com/PyCQA/flake8
     rev: "4.0.1"
     hooks:
       - id: "flake8"
