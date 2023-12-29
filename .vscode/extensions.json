@@ -5,6 +5,7 @@
         "ms-python.flake8",
         "ms-python.isort",
         "ms-python.mypy-type-checker",
-        "ms-python.python"
+        "ms-python.python",
+        "editorconfig.editorconfig"
     ]
 }
