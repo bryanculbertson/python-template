@@ -8,7 +8,6 @@ set -u
 set -o pipefail
 
 echo "Installing system dependencies"
-sudo apt-get update
 sudo apt-get -y install --no-install-recommends \
     bash \
     build-essential \
@@ -32,6 +31,10 @@ sudo apt-get -y install --no-install-recommends \
     locales \
     make \
     openssl \
+    pipx \
+    python2-dev \
+    python3-dev \
+    python3-pip \
     sudo \
     tk-dev \
     unzip \
@@ -41,45 +44,42 @@ sudo apt-get -y install --no-install-recommends \
     xz-utils \
     zip \
     zlib1g \
-    zlib1g-dev
+    zlib1g-dev \
+    zsh
 
 echo "Installing project dependencies"
-sudo apt-get update
 sudo apt-get -y install --no-install-recommends \
     shellcheck
 
-echo "Installing pyenv"
-curl https://pyenv.run | bash
+if ! command -v pyenv &> /dev/null; then
+    echo "Installing pyenv"
+    PYENV_GIT_TAG=v2.4.17 curl https://pyenv.run | bash
 
-# shellcheck disable=SC2016
-{
-    echo ''
-    echo 'export PYENV_ROOT="$HOME/.pyenv"'
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
-    echo 'eval "$(pyenv init --path)"'
-    echo 'eval "$(pyenv init -)"'
-    echo 'eval "$(pyenv virtualenv-init -)"'
- } >> ~/.bashrc
+    # shellcheck disable=SC2016
+    {
+        echo ''
+        echo 'export PYENV_ROOT="$HOME/.pyenv"'
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
+        echo 'eval "$(pyenv init -)"'
+        echo 'eval "$(pyenv virtualenv-init -)"'
+    } >> ~/.bashrc
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 echo "Installing project python version"
-"$PYENV_ROOT"/bin/pyenv install
-"$PYENV_ROOT"/bin/pyenv global "$(cat .python-version)"
+"$PYENV_ROOT"/bin/pyenv install --skip-existing
 
-echo "Installing pipx"
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-
-echo "Installing poetry"
-curl -sSL https://install.python-poetry.org | python3 -
-
-export PATH="$HOME/.local/bin:$PATH"
+if ! command -v pyenv &> /dev/null; then
+    echo "Installing poetry"
+    pipx ensurepath
+    pipx install poetry==1.8.4
+fi
 
 echo "Installing python dependencies using Poetry into local venv"
-"$HOME"/.local/bin/poetry env use "$(cat .python-version)"
 "$HOME"/.local/bin/poetry install
 
 echo "Enabling pre-commit hooks"

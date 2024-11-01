@@ -48,6 +48,12 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 
 #### Ubuntu/Debian
 
+0. You can run the following setup steps with:
+
+    ```sh
+    ./scripts/setup-ubuntu.sh
+    ```
+
 1. Install python build dependencies:
 
     ```sh
@@ -75,6 +81,10 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
         locales \
         make \
         openssl \
+        pipx \
+        python2-dev \
+        python3-dev \
+        python3-pip \
         sudo \
         tk-dev \
         unzip \
@@ -98,7 +108,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
 
     ```sh
-    curl https://pyenv.run | bash
+    PYENV_GIT_TAG=v2.4.17 curl https://pyenv.run | bash
     ```
 
     Add `pyenv` paths for `bash`:
@@ -107,8 +117,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
     {
         echo ''
         echo 'export PYENV_ROOT="$HOME/.pyenv"'
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
-        echo 'eval "$(pyenv init --path)"'
+        echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"'
         echo 'eval "$(pyenv init -)"'
         echo 'eval "$(pyenv virtualenv-init -)"'
     } >> ~/.bashrc
@@ -144,20 +153,9 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    curl -sSL https://install.python-poetry.org | python3 -
+    pipx install poetry==1.8.4
     ```
 
-    Add `poetry` paths for `bash`:
-
-    ```sh
-    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.bashrc
-    ```
-
-    Refresh current shell with updated paths:
-
-    ```sh
-    source ~/.bashrc
-    ```
 
 #### Mac
 
@@ -188,14 +186,18 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
     Add `pyenv` path for `zsh` (or `~/.bashrc` if using `bash`):
 
     ```sh
-    echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    {
+        echo ''
+        echo 'export PYENV_ROOT="$HOME/.pyenv"'
+        echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"'
+        echo 'eval "$(pyenv init -)"'
+        echo 'eval "$(pyenv virtualenv-init -)"'
+    } >> ~/.zshrc
     ```
 
     Refresh current shell with updated paths:
 
     ```sh
-    source ~/.zprofile
     source ~/.zshrc
     ```
 
@@ -223,19 +225,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    curl -sSL https://install.python-poetry.org | python3 -
-    ```
-
-    Add `poetry` path for `zsh` (or `~/.bashrc` if using `bash`):
-
-    ```sh
-    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
-    ```
-
-    Refresh current shell with updated paths:
-
-    ```sh
-    source ~/.zshrc
+    pipx install poetry==1.8.4
     ```
 
 ### Setup Project Environment
@@ -258,7 +248,6 @@ After setting up system environment with `pyenv` and `poetry`, then you can inst
 1. Install project and dependancies into local poetry managed `.venv`:
 
     ```sh
-    poetry env use "$(cat .python-version)"
     poetry install
     ```
 
