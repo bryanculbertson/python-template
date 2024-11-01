@@ -73,7 +73,7 @@ RUN echo '' >> $HOME/.bashrc \
     && echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.bashrc
 
 # Install Python
-ARG PYTHON_VERSION=3.12.1
+ARG PYTHON_VERSION=3.12.7
 RUN eval "$(pyenv init --path)" \
     && pyenv install ${PYTHON_VERSION}
 
