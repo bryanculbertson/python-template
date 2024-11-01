@@ -54,7 +54,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.python_version }}-${{ hashFiles('**/poetry.lock') }}
 
       - run: |
           poetry install
@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .tox
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.python_version }}-${{ hashFiles('**/poetry.lock') }}
 
       - run: poetry run tox -e test-coverage
 
