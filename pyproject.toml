@@ -6,8 +6,8 @@ authors = ["Bryan Culbertson <bryan.culbertson@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.13"
-click = "8.1.7"
-python-dotenv = "1.0.1"
+click = "8.2.1"
+python-dotenv = "1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 # Lint (versions duplicated in .pre-commit-config.yaml)
@@ -18,11 +18,11 @@ mypy = "1.13.0"
 pre-commit = "4.0.1"
 
 # Test
-tox = "4.23.2"
-pytest = "8.3.3"
-pytest-cov = "6.0.0"
-pytest-mock = "3.14.0"
-pytest-xdist = {version = "3.6.1", extras = ["psutil"]}
+tox = "4.27.0"
+pytest = "8.4.1"
+pytest-cov = "6.2.1"
+pytest-mock = "3.14.1"
+pytest-xdist = {version = "3.7.0", extras = ["psutil"]}
 pytest-randomly = "3.16.0"
 
 [tool.poetry.scripts]
