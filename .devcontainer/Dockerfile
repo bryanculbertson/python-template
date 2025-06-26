@@ -1,7 +1,7 @@
 # See here for image contents: https://github.com/devcontainers/images/tree/main/src/base-ubuntu
 
-# [Choice] Ubuntu version: jammy
-ARG VARIANT="jammy"
+# [Choice] Ubuntu version: noble
+ARG VARIANT="noble"
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 
 # Install system dependancies
@@ -62,7 +62,6 @@ ENV HOME /home/vscode
 
 # Install pyenv
 ENV PYENV_ROOT="${HOME}/.pyenv"
-ENV PYENV_GIT_TAG=v2.4.17
 RUN curl https://pyenv.run/ | /bin/bash
 ENV PATH="$PYENV_ROOT/bin:${PATH}"
 
@@ -73,11 +72,11 @@ RUN echo '' >> $HOME/.bashrc \
     && echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.bashrc
 
 # Install Python
-ARG PYTHON_VERSION=3.12.7
+ARG PYTHON_VERSION=3.13.5
 RUN eval "$(pyenv init --path)" \
     && pyenv install ${PYTHON_VERSION}
 
 # Install Poetry
-ARG POETRY_VERSION=1.8.4
+ARG POETRY_VERSION=1.8.5
 RUN pipx ensurepath \
     && pipx install poetry==${POETRY_VERSION}

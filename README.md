@@ -108,7 +108,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [pyenv](https://github.com/pyenv/pyenv) (if you haven't already):
 
     ```sh
-    PYENV_GIT_TAG=v2.4.17 curl https://pyenv.run | bash
+    curl https://pyenv.run | bash
     ```
 
     Add `pyenv` paths for `bash`:
@@ -153,7 +153,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    pipx install poetry==1.8.4
+    pipx install poetry==1.8.5
     ```
 
 
@@ -225,7 +225,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    pipx install poetry==1.8.4
+    pipx install poetry==1.8.5
     ```
 
 ### Setup Project Environment

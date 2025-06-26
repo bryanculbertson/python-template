@@ -5,7 +5,7 @@ description = "Basic template for python project"
 authors = ["Bryan Culbertson <bryan.culbertson@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 click = "8.1.7"
 python-dotenv = "1.0.1"
 
