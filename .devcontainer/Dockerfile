@@ -2,7 +2,7 @@
 
 # [Choice] Ubuntu version: noble
 ARG VARIANT="noble"
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/base:2-${VARIANT}
 
 # Install system dependancies
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -30,7 +30,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         make \
         openssl \
         pipx \
-        python2-dev \
         python3-dev \
         python3-pip \
         sudo \
