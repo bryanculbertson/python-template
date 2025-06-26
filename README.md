@@ -82,7 +82,6 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
         make \
         openssl \
         pipx \
-        python2-dev \
         python3-dev \
         python3-pip \
         sudo \
