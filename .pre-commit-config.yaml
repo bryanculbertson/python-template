@@ -1,7 +1,7 @@
 # Docs @ http://pre-commit.com/
 
 default_language_version:
-  python: "python3.12"
+  python: "python3.13"
 default_stages: ["pre-commit", "pre-push"]
 minimum_pre_commit_version: "4.0.1"
 
@@ -71,7 +71,7 @@ repos:
           - --pretty
 
   - repo: https://github.com/python-poetry/poetry
-    rev: "1.8.4"
+    rev: "1.8.5"
     hooks:
     -   id: poetry-check
     -   id: poetry-lock
