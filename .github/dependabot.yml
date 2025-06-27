@@ -4,9 +4,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
-      timezone: "America/Los_Angeles"
-      time: "03:00"
+      interval: "monthly"
     pull-request-branch-name:
       separator: "-"
     labels:
