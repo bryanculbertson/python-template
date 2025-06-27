@@ -52,7 +52,7 @@ sudo apt-get -y install --no-install-recommends \
 
 if ! command -v pyenv &> /dev/null; then
     echo "Installing pyenv"
-    PYENV_GIT_TAG=v2.4.17 curl https://pyenv.run | bash
+    curl https://pyenv.run | bash
 
     # shellcheck disable=SC2016
     {
