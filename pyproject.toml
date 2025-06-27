@@ -1,8 +1,13 @@
-[tool.poetry]
+[project]
 name = "template-cli"
 version = "0.1.0"
 description = "Basic template for python project"
-authors = ["Bryan Culbertson <bryan.culbertson@gmail.com>"]
+authors = [
+    {name = "Bryan Culbertson", email = "bryan.culbertson@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dynamic = ["dependencies"]
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -25,11 +30,11 @@ pytest-mock = "3.14.1"
 pytest-xdist = {version = "3.7.0", extras = ["psutil"]}
 pytest-randomly = "3.16.0"
 
-[tool.poetry.scripts]
+[project.scripts]
 template-cli = "template_cli.cli:cli"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]

@@ -152,7 +152,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    pipx install poetry==1.8.5
+    pipx install poetry==2.1.3
     ```
 
 
@@ -224,7 +224,7 @@ If you know what you are doing, then you can skip using `pyenv` as long as you h
 1. Install [poetry](https://github.com/python-poetry/poetry) (if you haven't already):
 
     ```sh
-    pipx install poetry==1.8.5
+    pipx install poetry==2.1.3
     ```
 
 ### Setup Project Environment
@@ -259,7 +259,7 @@ After setting up system environment with `pyenv` and `poetry`, then you can inst
     *or*
 
     ```sh
-    poetry shell
+    eval $(poetry env activate)
     template-cli --help
     ```
 
@@ -267,7 +267,7 @@ After setting up system environment with `pyenv` and `poetry`, then you can inst
 
 After setting up system and project environments you can run tests, formatting, linting, etc. with [tox](https://github.com/tox-dev/tox).
 
-`tox` is installed and managed within the local venv so either activate the `venv` with `poetry shell`, or prefix each command with `poetry run`.
+`tox` is installed and managed within the local venv so either activate the `venv` with `eval $(poetry env activate)`, or prefix each command with `poetry run`.
 
 1. Run tests and linting
 

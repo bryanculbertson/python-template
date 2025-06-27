@@ -75,7 +75,7 @@ echo "Installing project python version"
 if ! command -v pyenv &> /dev/null; then
     echo "Installing poetry"
     pipx ensurepath
-    pipx install poetry==1.8.4
+    pipx install poetry==2.1.3
 fi
 
 echo "Installing python dependencies using Poetry into local venv"
