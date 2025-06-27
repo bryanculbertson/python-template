@@ -76,6 +76,6 @@ RUN eval "$(pyenv init --path)" \
     && pyenv install ${PYTHON_VERSION}
 
 # Install Poetry
-ARG POETRY_VERSION=1.8.5
+ARG POETRY_VERSION=2.1.3
 RUN pipx ensurepath \
     && pipx install poetry==${POETRY_VERSION}
