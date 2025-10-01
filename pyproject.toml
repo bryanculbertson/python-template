@@ -28,7 +28,7 @@ pytest = "8.4.1"
 pytest-cov = "6.2.1"
 pytest-mock = "3.14.1"
 pytest-xdist = {version = "3.7.0", extras = ["psutil"]}
-pytest-randomly = "3.16.0"
+pytest-randomly = "4.0.1"
 
 [project.scripts]
 template-cli = "template_cli.cli:cli"
